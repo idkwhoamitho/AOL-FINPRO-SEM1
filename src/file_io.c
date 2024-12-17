@@ -1,7 +1,7 @@
 #include "file_io.h"
 
 
-int get_length(const char* filePath){
+int get_lenght(const char* filePath){
     int count = 0;
     FILE *file = fopen(filePath,"r");
     if(file == NULL){
@@ -37,11 +37,7 @@ struct Inventory* readFileInventory(const char* filePath){
         /* code */
         perror("An error has occured");
     }
-    char line[1024];
-    int index = 0;
 
-    // Skip the header line
-    fgets(line, sizeof(line), data);
 
     while (fscanf(data,"%d,%d,%d",&inventory[i].item_id,&inventory[i].supplier_id,&inventory[i].quantity) == 4)
     {
@@ -62,11 +58,6 @@ struct Supplier* readFileSupplier(const char* filePath){
         /* code */
         perror("An error has occured");
     }
-    char line[1024];
-    int index = 0;
-
-    // Skip the header line
-    fgets(line, sizeof(line), data);
 
     while (fscanf(data,"%d,%s,%s",&supplier[i].id,supplier[i].name,&supplier[i].phone_number) == 4)
     {
@@ -88,11 +79,6 @@ struct Item* readFileItem(const char* filePath){
         /* code */
         perror("An error has occured");
     }
-    char line[1024];
-    int index = 0;
-
-    // Skip the header line
-    fgets(line, sizeof(line), data);
 
     while (fscanf(data,"%d,%s,%f",&Item[i].id,Item[i].item_name,&Item[i].price) == 4)
     {
@@ -103,7 +89,7 @@ struct Item* readFileItem(const char* filePath){
 }
 
 void rewriteInventory(struct Inventory *data,const char* filePath){
-   FILE *file = fopen(filePath,"r");
+   FILE *file = fopen(filePath,"w");
    int size = get_length(filePath);
 
    for (int i = 0; i < filePath; i++)
@@ -121,7 +107,7 @@ void rewriteInventory(struct Inventory *data,const char* filePath){
 
 
 void rewriteSupplier(struct Supplier *data,const char* filePath){
-    FILE *file = fopen(filePath,"r");
+    FILE *file = fopen(filePath,"w");
    int size = get_length(filePath);
 
    for (int i = 0; i < filePath; i++)
@@ -138,7 +124,7 @@ void rewriteSupplier(struct Supplier *data,const char* filePath){
 }
 
 void rewriteItem(struct Item *data,const char* filePath){
-    FILE *file = fopen(filePath,"r");
+    FILE *file = fopen(filePath,"w");
    int size = get_length(filePath);
 
    for (int i = 0; i < filePath; i++)
