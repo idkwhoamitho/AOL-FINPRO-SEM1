@@ -1,5 +1,32 @@
 #ifndef MENU_H
 #define MENU_H
+#include <ctype.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include "fileIO.h"
+#include <windows.h>
+
+void addRecordMenu(){
+  struct Item data;
+  printf("Input Item's Name: ");
+  scanf("%s", data.item_name);
+  printf("Input Item's Price: );
+  scanf("%d", &data.price);
+  printf("Input Item's Quantity: ");
+  scanf("%d", &data.quantity);
+  addItem(data, char* filePath);
+}
+
+void showRecordMenu(){
+  int rows, price, quantity;
+  printf("Number of rows: : ");
+  scanf("%d", rows);
+  printf("Total Price: ");
+  scanf("%d", price);
+  printf("Total Stock Quantity: ");
+  scanf("%d", quantity);
+  printRecord(rows,price,quantity);
+}
 
 void printRecord(rows,price,quantity){
     printf("----------------------------------------------------------------------------------------------------------\n");
