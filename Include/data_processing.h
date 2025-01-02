@@ -7,6 +7,7 @@ struct Item {
     int id;
     char item_name[50];
     float price;
+    int quantity;
 };
 
 struct Supplier {
