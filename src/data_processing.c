@@ -146,10 +146,11 @@ void addSupplier(struct Supplier data, const char* filePath){
 }
 void addItem(struct Item data, const char* filePath){
     FILE *file = fopen(filePath,"a");
-    fprintf(file,"\n%d,%s,%f",
+    fprintf(file,"\n%d,%s,%f,%d",
         data.id,
         data.item_name,
-        data.price
+        data.price,
+        data.quantity
     );
     fclose(file);
 }
